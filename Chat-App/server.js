@@ -30,6 +30,12 @@ server.on("connection", (socket) => {
     });
   });
 
+  socket.on("error", () => {
+    clients.map((client) => {
+        client.socket.write(`User ${clientId} left!`);
+    });
+  });
+
   // Broadcasting a message to everyone when someone leaves the chat room
   socket.on("end", () => {
     clients.map((client) => {
