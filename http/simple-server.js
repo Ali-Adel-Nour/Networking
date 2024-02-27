@@ -1,24 +1,40 @@
-const http = require('node:http'); //common to this native to node dont need to install anything else
+const http = require("node:http");
 
-const server = http.createServer((req,res)=>{
+const server = http.createServer();
 
-})
+server.on("request", (request, response) => {
+  console.log("--------- METHOD: ---------");
+  console.log(request.method);
 
-server.on("request",(request,response)=>{
-  console.log("______Method_____")
-  console.log(request.method)
+  console.log("--------- URL: ---------");
+  console.log(request.url);
 
-  console.log("______URL_____")
-  console.log(request.url)
-
-  console.log("______Headers_____")
+  console.log("--------- HEADERS: ---------");
   console.log(request.headers);
 
-  request.on("data",(chunk)=>{
-    console.log(chunk.toString("utf-8"));
-  })
-})
+  const name = request.headers.name;
 
-server.listen(8050,()=>{
-  console.log('Server listening on port http://localhost:8050');
-})
+  console.log("--------- BODY: ---------");
+
+  let data = "";
+
+  request.on("data", (chunk) => {
+    data += chunk.toString();
+    console.log(data);
+  });
+
+  request.on("end", () => {
+    data = JSON.parse(data);
+
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end(
+      JSON.stringify({
+        message: `Post with title ${data.title} was created by ${name}`,
+      })
+    );
+  });
+});
+
+server.listen(8050, () => {
+  console.log("Server listening on http://localhost:8050");
+});
