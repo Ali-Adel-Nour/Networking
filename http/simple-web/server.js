@@ -27,6 +27,16 @@ server.on("request",async (req, res) => {
 
   }
 
+  if(req.url === '/scripts.js' && req.method === 'GET'){
+    res.setHeader('Content-Type', 'application/javascript');
+
+    const fileHandle = await fs.open("./public/scripts.js","r")
+    const fileStream = fileHandle.createReadStream();
+
+   fileStream.pipe(res)
+
+  }
+
 })
 
 server.listen(9000,()=>{
