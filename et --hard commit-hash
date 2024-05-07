@@ -1,0 +1,31 @@
+[33m1e2b193[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: commit: File Uploader
+[33m9d7b83e[m HEAD@{1}: reset: moving to HEAD~
+[33mb104053[m HEAD@{2}: reset: moving to HEAD~
+[33m94696c0[m HEAD@{3}: reset: moving to HEAD~
+[33m2a6adb4[m HEAD@{4}: reset: moving to HEAD~
+[33mc6d48aa[m HEAD@{5}: reset: moving to HEAD~
+[33m2b0a1aa[m HEAD@{6}: reset: moving to HEAD~
+[33m6449990[m HEAD@{7}: reset: moving to HEAD~
+[33m5e561c1[m HEAD@{8}: reset: moving to HEAD~
+[33me842e79[m HEAD@{9}: reset: moving to HEAD~
+[33m6aa14de[m HEAD@{10}: commit: Re-add files
+[33me842e79[m HEAD@{11}: reset: moving to HEAD
+[33me842e79[m HEAD@{12}: commit: File Uploader with packages
+[33m5e561c1[m HEAD@{13}: revert: Revert " File Uploader:Setup"
+[33m6449990[m HEAD@{14}: reset: moving to HEAD~
+[33m464e400[m HEAD@{15}: reset: moving to HEAD~
+[33m7d775b3[m HEAD@{16}: reset: moving to HEAD~
+[33mce4628d[m HEAD@{17}: reset: moving to HEAD
+[33mce4628d[m HEAD@{18}: reset: moving to HEAD
+[33mce4628d[m HEAD@{19}: reset: moving to Head
+[33mce4628d[m HEAD@{20}: reset: moving to Head
+[33mce4628d[m HEAD@{21}: commit: client and server
+[33m7d775b3[m HEAD@{22}: commit: finshed
+[33m464e400[m HEAD@{23}: commit: finished
+[33m6449990[m HEAD@{24}: commit: File Uploader:Setup
+[33m2b0a1aa[m HEAD@{25}: commit: DNS
+[33mc6d48aa[m HEAD@{26}: commit: gRPC
+[33m2a6adb4[m HEAD@{27}: commit: WebSocket
+[33m94696c0[m HEAD@{28}: commit: Lowest lvl of networking on node.js
+[33mb104053[m HEAD@{29}: commit: UDP User Datagarm Protcol
+[33m9d7b83e[m HEAD@{30}: commit (initial): TCP
