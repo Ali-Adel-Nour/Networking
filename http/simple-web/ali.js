@@ -30,6 +30,21 @@ class Ali {
         fileStream.pipe(res);
       };
 
+      res.status = (code) => {
+        res.statusCode = code;
+        return res;
+      }
+res.writableHighWaterMak
+      res.json = (data)=>{
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify(data));
+      }
+
+      if (!this.routes[req.method.toLowerCase() + req.url]) {
+
+        return res.status(404).json({ error: `Cannot ${req.method} ${req.url}` })
+      }
+
       this.routes[req.method.toLocaleLowerCase() + req.url](req, res);
     });
   }
