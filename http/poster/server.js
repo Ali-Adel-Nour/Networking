@@ -1,5 +1,6 @@
 const Ali = require("../simple-web/ali");
 
+const SESSIONS = [];
 
 const USERS = [
   { id: 1, name: "Ali Adel", username: "ali", password: "string" },
@@ -22,7 +23,7 @@ const POSTS = [
   }
 ]
 
-const PORT = 8000
+const PORT = 9001
 
 
 const server = new Ali()
@@ -31,7 +32,16 @@ const server = new Ali()
 
 //File Routes
 
+server.route("get", '/', (req, res) => {
+  res.sendFile("./public/index.html", "text/html")
+})
+
 server.route("get", '/login', (req, res) => {
+  res.sendFile("./public/index.html", "text/html")
+})
+
+
+server.route("get", '/profile', (req, res) => {
   res.sendFile("./public/index.html", "text/html")
 })
 
@@ -65,7 +75,19 @@ server.route("post", '/api/login', (req, res) => {
 
 
     if (user && user.password === password) {
+
+
+      const token = Math.floor( Math.random( ) * 1000000000000000).toString()
+
+      //Save The Genrated Token
+
+      SESSIONS.push( { userId:user.id, token:token } )
+
+      res.setHeader("Set-Cookie", `token=${token}; Path=/;`)
+
+
       res.status(200).json({ message: "Login Successful" })
+
     } else {
       res.status(401).json({ message: "Login Failed" })
     }
@@ -73,10 +95,19 @@ server.route("post", '/api/login', (req, res) => {
 })
 
 
-// server.route("get","/api/users",(req,res)=>{
+server.route("get","/api/user",(req,res)=>{
 
-//   res.status(200).json(USERS)
-// })
+  const token = req.headers.cookie.split("=") [1]
+
+  const session = SESSIONS.find((session) => session.token === token)
+
+  if (session){
+console.log("Sending the user info......")
+  }else{
+    res.status(401).json({ error: "Unauthorized" })
+  }
+  console.log(token)
+})
 
 //send all post routes I have
 server.route("get", "/api/posts", (req, res) => {
